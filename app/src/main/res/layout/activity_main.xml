@@ -11,6 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="32dp"
         android:text="@string/you_are_at"
         android:textSize="18sp"
@@ -30,7 +31,9 @@
         app:layout_constraintBaseline_toBaselineOf="@+id/textYourAreAt"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintLeft_toRightOf="@+id/textYourAreAt"
-        app:layout_constraintRight_toLeftOf="@+id/buttonRefresh" />
+        app:layout_constraintRight_toLeftOf="@+id/buttonRefresh"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp" />
 
     <Button
         android:id="@+id/buttonRefresh"
@@ -40,22 +43,20 @@
         android:onClick="refreshLocation"
         android:text="@string/refresh_button"
         app:layout_constraintBaseline_toBaselineOf="@+id/textLocation"
-        app:layout_constraintRight_toRightOf="parent" />
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginEnd="16dp" />
 
-    <TextView
-        android:id="@+id/textBSSID"
-        android:layout_width="323dp"
-        android:layout_height="401dp"
+    <ListView
+        android:id="@+id/listWifi"
+        android:layout_width="327dp"
+        android:layout_height="437dp"
         android:layout_marginBottom="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         android:layout_marginTop="16dp"
-        android:contentDescription="BSSID"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.6"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textLocation"
-        app:layout_constraintVertical_bias="0.583" />
+        app:layout_constraintTop_toBottomOf="@+id/textLocation" />
 
 </android.support.constraint.ConstraintLayout>
