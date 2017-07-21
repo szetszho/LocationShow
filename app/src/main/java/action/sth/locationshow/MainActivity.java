@@ -17,6 +17,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
@@ -32,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
 
     TextView textLocation;
     ListView listWifi;
+    Button buttonRefresh;
 
     WifiManager wifi;
     List<ScanResult> wifiScanList;
@@ -46,6 +48,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         textLocation = (TextView) findViewById(R.id.textLocation);
         listWifi = (ListView) findViewById(R.id.listWifi);
+        buttonRefresh = (Button) findViewById(R.id.buttonRefresh);
+        buttonRefresh.setClickable(false);
 
         if (checkSelfPermission(CoarseLocation) != PackageManager.PERMISSION_GRANTED) {
             requestPermissions(new String[]{Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION}, 123);
@@ -65,10 +69,11 @@ public class MainActivity extends AppCompatActivity {
         listWifi.setAdapter(this.adapter);
 
         checkWifiStatus();
-        //refreshLocation();
+        refreshLocation();
     }
 
     public void onClickRefreshButton(View view){
+        buttonRefresh.setClickable(false);
         refreshLocation();
     }
 
@@ -116,6 +121,7 @@ public class MainActivity extends AppCompatActivity {
                 Log.w("WifiScanner","Exception:"+ e);
                 String location = checkScanList();
                 textLocation.setText(location);
+                buttonRefresh.setClickable(true);
             }
         }
     };
